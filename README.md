@@ -1,5 +1,15 @@
 # nuke-modules
 
+## Find a node in nukescript
+
+```python
+import nuke
+
+import nodes
+
+matching_node = nodes.findNode('Read1')
+```
+
 ## Find a node upstream
 
 ```python
