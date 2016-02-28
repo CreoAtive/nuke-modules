@@ -23,4 +23,4 @@ def findNode(node_name):
         if matchNode(node, node_name):
             return node
 
-    raise myexceptions.NoMatchException('findNode: No matching node could be found')
+    raise myexceptions.NoMatchException('findNode: No node matches {node_name}'.format(node_name = node_name))

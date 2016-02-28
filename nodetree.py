@@ -1,9 +1,9 @@
+import nuke
+
 import sys
 import os
 
 sys.path.append(os.path.dirname(__file__))
-
-import nuke
 
 import nodes
 import myexceptions
@@ -15,12 +15,13 @@ def findNodeUpstream(curr_node, node_name):
         return curr_node
     else:
         for index in range(curr_node.inputs()):
-            try:
-                result = findNodeUpstream(curr_node.input(index), node_name)
-            except myexceptions.NoMatchException:
-                pass
-            else:
-                return result
+            if curr_node.input(index):
+                try:
+                    result = findNodeUpstream(curr_node.input(index), node_name)
+                except myexceptions.NoMatchException:
+                    pass
+                else:
+                    return result
 
     raise myexceptions.NoMatchException('findNodeUpstream: No matching node could be found')
 
